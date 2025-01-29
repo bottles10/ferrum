@@ -65,3 +65,5 @@ group :test do
 end
 
 gem "ferrum", "~> 0.16"
+
+gem "sidekiq", "~> 7.3"
