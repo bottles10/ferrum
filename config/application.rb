@@ -23,5 +23,14 @@ module Ferrum
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.active_job.queue_adapter = :sidekiq # or :resque, :delayed_job
+    Sidekiq.configure_server do |config|
+      config.redis = { url: 'redis://localhost:6380' }
+    end
+    
+    Sidekiq.configure_client do |config|
+      config.redis = { url: 'redis://localhost:6380' }
+    end    
+
   end
 end
